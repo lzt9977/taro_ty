@@ -1,0 +1,3 @@
+export const GET_SWIPER = 'GET_SWIPER'
+export const GET_HOT_CLASSIFY = 'GET_HOT_CLASSIFY'
+export const GET_ACCOMPANY_LIST = 'GET_ACCOMPANY_LIST'

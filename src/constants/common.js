@@ -1,0 +1,2 @@
+export const UPDATE_NET_WORK = 'UPDATE_NET_WORK'
+export const GET_CLASSIFY = 'GET_CLASSIFY'
