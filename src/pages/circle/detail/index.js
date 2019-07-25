@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Button, Text, Image, Video } from '@tarojs/components'
+import { View, Button, Text, Image, Video, Input } from '@tarojs/components'
 import { connect } from '@tarojs/redux'
 import { NetWork, Loading } from '@components'
 
@@ -146,78 +146,78 @@ class CircleDetail extends Component {
 
     return (
       <View className='invite'>
-        <View class='bgs'>
+        <View className='bgs'>
           {
-            invite.video ? <View  class='image-view'>
-              <View class='top'>
-                <View class='iconfont icon-huo'></View>TOP 1
+            invite.video ? <View  className='image-view'>
+              <View className='top'>
+                <View className='iconfont icon-huo'></View>TOP 1
               </View>
-              <Video class="myVideo" src={ invite.video } controls></Video>
+              <Video className="myVideo" src={ invite.video } controls></Video>
             </View>
             :
-            <View class='image-View'>
-              <View class='top'>
-                <View class='iconfont icon-huo'></View>TOP 1
+            <View className='image-View'>
+              <View className='top'>
+                <View className='iconfont icon-huo'></View>TOP 1
               </View>
-              <Image src={ invite.image } mode="aspectFill" class='image' />
+              <Image src={ invite.image } mode="aspectFill" className='image' />
             </View>
           }
 
-          <View class='content'>
+          <View className='content'>
             { invite.content }
           </View>
-          <View class='time'>
+          <View className='time'>
             { invite.create_time }
           </View>
-          <View class='agree'>
-            <View class='item-agree'>
-              <View class='iconfont icon-zan'></View>
-              <Text class='num'>{ invite.agree_num }</Text>
+          <View className='agree'>
+            <View className='item-agree'>
+              <View className='iconfont icon-zan'></View>
+              <Text className='num'>{ invite.agree_num }</Text>
             </View>
-            <View class='item-agree'>
-              <View class='iconfont icon-liuyanguanli'></View>
-              <Text class='num'>{ invite.View_num }</Text>
+            <View className='item-agree'>
+              <View className='iconfont icon-liuyanguanli'></View>
+              <Text className='num'>{ invite.View_num }</Text>
             </View>
           </View>
-          <View class='avatar-view'>
-            <Image src={ invite.avatar } class='avatar'></Image>
+          <View className='avatar-view'>
+            <Image src={ invite.avatar } className='avatar'></Image>
             <View>
-              <Text class='accompany_name'>{ invite.accompany_name }</Text>
-              <Text class='fans'>粉丝数:{ invite.user_id }</Text>
+              <Text className='accompany_name'>{ invite.accompany_name }</Text>
+              <Text className='fans'>粉丝数:{ invite.user_id }</Text>
             </View>
           </View>
         </View>
 
 
-        <View class='comment'>
-          <Text class='tits'>评论(62)</Text>
+        <View className='comment'>
+          <Text className='tits'>评论(62)</Text>
           {
             comment.map((item, idx)=>{
               return (
                 <View key={ item.id }>
-                  <View class='comment_list'>
-                    <Image src={ item.avatarUrl } class='avatar_comment' />
-                    <View class='user'>
-                      <Text class='nickName'>{ item.nickName }</Text>
-                      <Text class='contents'>{ item.content }</Text>
-                      <View class='flexs'>
-                        <Text class='times'>{ item.create_time }</Text>
-                        <View class='agree1' onClick={ this.postComments.bind(this, item, item.id, item.nickName) }>
-                          <View class='item-agree'>
-                            <View class='iconfont icon-liuyanguanli'></View>
-                            <Text class='ly color'>留言</Text>
+                  <View className='comment_list'>
+                    <Image src={ item.avatarUrl } className='avatar_comment' />
+                    <View className='user'>
+                      <Text className='nickName'>{ item.nickName }</Text>
+                      <Text className='contents'>{ item.content }</Text>
+                      <View className='flexs'>
+                        <Text className='times'>{ item.create_time }</Text>
+                        <View className='agree1' onClick={ this.postComments.bind(this, item, item.id, item.nickName) }>
+                          <View className='item-agree'>
+                            <View className='iconfont icon-liuyanguanli'></View>
+                            <Text className='ly color'>留言</Text>
                           </View>
-                          <View class='item-agree'>
-                            <View class='iconfont icon-zan'></View>
-                            <Text class='num color'>{ item.agree_num }</Text>
+                          <View className='item-agree'>
+                            <View className='iconfont icon-zan'></View>
+                            <Text className='num color'>{ item.agree_num }</Text>
                           </View>
                         </View>
                       </View>
                       {
-                        item.list.length > 0 && <View class='comment-vlist'>
+                        item.list.length > 0 && <View className='comment-vlist'>
                           {
                             item.list.map((q, p)=>{
-                              return (<View key={ q.id } class='qs' onClick={ this.postComments.bind(this, q, item.id, item.nickName) }>
+                              return (<View key={ q.id } className='qs' onClick={ this.postComments.bind(this, q, item.id, item.nickName) }>
                                 <Text>{ q.nickName }</Text>
                                 { q.user_id != q.receiver_id && <Text>回复了</Text> }
                                 { q.user_id != q.receiver_id && <Text>{ q.receiver_name }</Text> }
@@ -237,8 +237,8 @@ class CircleDetail extends Component {
         </View>
 
 
-        <View class='fixed-bottom'>
-          <Input placeholder={ this.state.inpPlaceholder } class='postComment' onConfirm={ this.postComment } value={ this.state.inpVal } focus={ this.state.focus } />
+        <View className='fixed-bottom'>
+          <Input placeholder={ this.state.inpPlaceholder } className='postComment' onConfirm={ this.postComment } value={ this.state.inpVal } focus={ this.state.focus } />
         </View>
 
 

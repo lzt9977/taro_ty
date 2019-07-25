@@ -5,6 +5,7 @@ import { NetWork } from '@components'
 import './index.less'
 
 import * as actions from '../../../actions/user'
+import * as homeActions from '../../../actions/home'
 
 
 @connect(
@@ -14,7 +15,7 @@ import * as actions from '../../../actions/user'
       home: state.home
     }
   },
-  { ...actions }
+  { ...actions, ...homeActions }
 )
 class Post extends Component {
 
@@ -23,7 +24,8 @@ class Post extends Component {
     picList: [],
     accompany: [{ name:"请选择账号", id:0}],
     index: 0,
-    look: true
+    look: true,
+    accompanyName: "请选择账号"
   }
   config = {
     navigationBarTitleText: '发布动态',
@@ -36,11 +38,18 @@ class Post extends Component {
   componentWillUnmount () { }
 
   componentDidShow() {
-    let arr = this.state.accompany
-    arr.push(...this.props.home.accompany)
-    this.setState({
-      accompany: arr
+    this.props.getAccompanyList().then(res => {
+      if (res.code == 200) { 
+        let arr = this.state.accompany
+        console.log(res)
+        arr.push(...res.data)
+        this.setState({
+          accompany: arr
+        })
+      }
     })
+
+    
   }
   bindTextAreaBlur(e) {
     this.setState({
@@ -50,6 +59,7 @@ class Post extends Component {
 
   bindPickerChange(e) {
     let idx = e.detail.value
+
     this.setState({
       index: idx
     })
@@ -142,37 +152,37 @@ class Post extends Component {
     }
     return (
       <View className='post'>
-        <Textarea onInput={this.bindTextAreaBlur} class='textarea' placeholder-class='placeholder' placeholder="这一刻的想法..." />
+        <Textarea onInput={this.bindTextAreaBlur} className='textarea' placeholder-className='placeholder' placeholder="这一刻的想法..." />
 
-        <View class='pic-content'>
+        <View className='pic-content'>
           {
             this.state.picList.map(i => {
               return (
-                <View class='item' key={i}>
+                <View className='item' key={i}>
                   <Image src={ i } mode="aspectFill"></Image>
                 </View>
               )
             })
           }
 
-          {this.state.picList.length < 9 && <View class='addPic item chooseImage' onClick={this.chooseImage}><View class='iconfont icon-jia'></View></View> }
+          {this.state.picList.length < 9 && <View className='addPic item chooseImage' onClick={this.chooseImage}><View className='iconfont icon-jia'></View></View> }
         </View>
 
-        <View class='inp-view'>
-          <Picker onChange={this.bindPickerChange} value={this.state.index} range-key="name" range={this.state.accompany}>
+        <View className='inp-view'>
+          <Picker onChange={this.bindPickerChange.bind(this)} value={this.state.index} rangeKey="name" range={this.state.accompany}>
             {
               this.state.accompany[this.state.index].name == '请选择账号' ?
-              <View class="picker placeholder">
+              <View className="picker placeholder">
                 {this.state.accompany[this.state.index].name}
               </View> :
-              <View class="picker">
+              <View className="picker">
                   {this.state.accompany[this.state.index].name}
               </View>
             }
           </Picker>
         </View>
 
-        <View class='submit' onClick={this.submit}>发表</View>
+        <View className='submit' onClick={this.submit}>发表</View>
       </View>
     )
   }

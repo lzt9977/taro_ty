@@ -7,7 +7,7 @@ class Loading extends Component {
 
   render () {
     return (
-      <View class='loading'><Image src={ loading } className='loading-img'></Image></View>
+      <View className='loading'><Image src={ loading } className='loading-img'></Image></View>
     )
   }
 }

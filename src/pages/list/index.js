@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Button, Text, Textarea, Picker } from '@tarojs/components'
+import { View, Button, Text, Textarea, Picker, Swiper, Image, SwiperItem } from '@tarojs/components'
 import { connect } from '@tarojs/redux'
 import { NetWork } from '@components'
 import './index.less'
@@ -68,28 +68,26 @@ class List extends Component {
     }
     let { interval } = this.state
     return (
-      <View className='post'>
+      <View className='list'>
         <View>
-          <View class='swiper-view'>
-            <Swiper circular="true" interval={interval} onChange={this.swiperChange}>
+          <View className='swiper-view'>
+            <Swiper circular="true" interval={interval} onChange={this.swiperChange.bind(this)}>
               {
                 this.props.home.swiper.map(v => {
                   return (
-                    <Block key={v.id}>
-                      <swiper-item class='swiper-item'>
-                        <Image src={v.url} class="slide-image" />
-                      </swiper-item>
-                    </Block>
+                    <SwiperItem className='swiper-item' key={v.id}>
+                      <Image src={v.url} className="slide-image" />
+                    </SwiperItem>
                   )
                 })
               }
             </Swiper>
-            <View class='indicator'>
+            <View className='indicator'>
             {
               this.props.home.swiper.map((v, index) => {
                 return (
-                  <View key={ v.id } class={ [index == this.state.idx ? 'active':'', 'dots'] }>
-                    <View class='radius'></View>
+                  <View key={ v.id } className={ [index == this.state.idx ? 'active':'', 'dots'] }>
+                    <View className='radius'></View>
                   </View>
                 )
               })
@@ -97,24 +95,24 @@ class List extends Component {
             </View>
           </View>
 
-          <View class='item-view'>
+          <View className='item-view'>
             {
               this.props.list.listAccompany.map(item => {
                 return (
-                  <View class='item-accompany' key={item.id}>
-                    <Image src={ item.avatar } class='avatar' />
-                    <View class='introduce'>
-                      <View class='user_info'>
-                        <Text class='name'>{ item.name }</Text>
-                        <Text class='level'>{ item.level_name }</Text>
+                  <View className='item-accompany' key={item.id}>
+                    <Image src={ item.avatar } className='avatar' />
+                    <View className='introduce'>
+                      <View className='user_info'>
+                        <Text className='name'>{ item.name }</Text>
+                        <Text className='level'>{ item.level_name }</Text>
                       </View>
-                      <View class='second'>
+                      <View className='second'>
                         <Text>{ item.classify_name }</Text>
-                        <Text class='pdlr'>|</Text>
+                        <Text className='pdlr'>|</Text>
                         <Text>接单量 { item.order_num }</Text>
                       </View>
                     </View>
-                    <Text class='price'>{ item.price }RMB</Text>
+                    <Text className='price'>{ item.price }RMB</Text>
                   </View>
                 )
               })

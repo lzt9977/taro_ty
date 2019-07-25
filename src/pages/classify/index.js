@@ -42,11 +42,11 @@ class Classify extends Component {
       <View className="classify">
 
         {
-          this.state.loading ? <Loading /> : <View class="classify-item">
+          this.state.loading ? <Loading /> : <View className="classify-item">
             {this.props.common.classify.map((v, i) => {
               return (
-                <View class="item" key={v.id}>
-                  <Image src={v.icon} class="icon"/>
+                <View className="item" key={v.id}>
+                  <Image src={v.icon} className="icon"/>
                   <Text>{v.name}</Text>
                 </View>
               );

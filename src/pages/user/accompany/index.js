@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Button, Text, Textarea, Picker } from '@tarojs/components'
+import { View, Button, Text, Textarea, Picker, Input } from '@tarojs/components'
 import { connect } from '@tarojs/redux'
 import { NetWork } from '@components'
 import './index.less'
@@ -187,62 +187,62 @@ class Accompany extends Component {
     }
     let { classify, index, hourPrice, index1, avatarUrl,  } = this.state
     return (
-      <View className='post'>
-        <View class='accompany-list'>
-          <Text class='label'>陪主名称</Text>
-          <View class='inp-view'>
-            <Input placeholder="请输入陪主名称" placeholder-class='placeholder' onInput={this.inp.bind(this, "name")}/>
+      <View className='accompany'>
+        <View className='accompany-list'>
+          <Text className='label'>陪主名称</Text>
+          <View className='inp-view'>
+            <Input placeholder="请输入陪主名称" placeholder-className='placeholder' onInput={this.inp.bind(this, "name")}/>
           </View>
         </View>
-        <View class='accompany-list'>
-          <Text class='label'>陪主头像</Text>
-          <View class='inp-view'>
-            <Text class='tips'>点击头像可重新上传</Text>
-            <Image src={avatarUrl} class='avatar' onClick={this.chooseImage} />
+        <View className='accompany-list'>
+          <Text className='label'>陪主头像</Text>
+          <View className='inp-view'>
+            <Text className='tips'>点击头像可重新上传</Text>
+            <Image src={avatarUrl} className='avatar' onClick={this.chooseImage} />
           </View>
         </View>
-        <View class='accompany-list'>
-          <Text class='label'>手机号码</Text>
-          <View class='inp-view'>
-            <Input placeholder="请输入手机号码" maxlength='11' onInput={this.inp.bind(this, "mobile")} placeholder-class='placeholder'/>
+        <View className='accompany-list'>
+          <Text className='label'>手机号码</Text>
+          <View className='inp-view'>
+            <Input placeholder="请输入手机号码" maxlength='11' onInput={this.inp.bind(this, "mobile")} placeholder-className='placeholder'/>
           </View>
         </View>
-        <View class='accompany-list'>
-          <Text class='label'>陪玩游戏</Text>
-          <View class='inp-view'>
+        <View className='accompany-list'>
+          <Text className='label'>陪玩游戏</Text>
+          <View className='inp-view'>
             <Picker onChange={this.bindPickerChange} value={index} range-key="name" range={classify}>
               {
                 classify[index].name == '请选择陪玩游戏' ?
-                <View class="picker placeholder">
+                <View className="picker placeholder">
                     {classify[index].name}
-                </View> : <View class="picker">
+                </View> : <View className="picker">
                   {classify[index].name}
                 </View>
               }
             </Picker>
           </View>
         </View>
-        <View class='accompany-list'>
-          <Text class='label'>游戏段位</Text>
-          <View class='inp-view'>
-            <Input placeholder="请填写游戏段位" onInput={this.inp.bind(this, "level_name")} placeholder-class='placeholder'/>
+        <View className='accompany-list'>
+          <Text className='label'>游戏段位</Text>
+          <View className='inp-view'>
+            <Input placeholder="请填写游戏段位" onInput={this.inp.bind(this, "level_name")} placeholder-className='placeholder'/>
           </View>
         </View>
-        <View class='accompany-list'>
-          <Text class='label'>自我介绍</Text>
-          <View class='inp-view'>
-            <Input placeholder="写一句自我介绍拉客吧..." placeholder-class='placeholder' onInput={this.inp.bind(this, "introduce")}/>
+        <View className='accompany-list'>
+          <Text className='label'>自我介绍</Text>
+          <View className='inp-view'>
+            <Input placeholder="写一句自我介绍拉客吧..." placeholder-className='placeholder' onInput={this.inp.bind(this, "introduce")}/>
           </View>
         </View>
-        <View class='accompany-list'>
-          <Text class='label'>小时价位</Text>
-          <View class='inp-view'>
+        <View className='accompany-list'>
+          <Text className='label'>小时价位</Text>
+          <View className='inp-view'>
             <Picker onChange={this.bindPickerChange1} value={index1} range={hourPrice}>
               {
-                hourPrice[index1] == '请选择小时价位' ? <View class="picker placeholder">
+                hourPrice[index1] == '请选择小时价位' ? <View className="picker placeholder">
                     {hourPrice[index1]}
                 </View> :
-                <View class="picker">
+                <View className="picker">
                     {hourPrice[index1]}
                 </View>
               }
@@ -250,10 +250,10 @@ class Accompany extends Component {
           </View>
         </View>
 
-        <View class='submit' onClick={this.submit}>
+        <View className='submit' onClick={this.submit}>
           提交审核
         </View>
-        <View class='tips_text'>
+        <View className='tips_text'>
           一个微信账号可注册多个陪主账号,暂时无限制
         </View>
       </View>

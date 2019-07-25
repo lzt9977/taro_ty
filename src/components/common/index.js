@@ -42,7 +42,7 @@ class Common extends Component {
 
   render () {
     return (
-      <View class='common'></View>
+      <View className='common'></View>
     )
   }
 }

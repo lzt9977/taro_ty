@@ -40,13 +40,13 @@ class Share extends Component {
               qrcode: qrcode.path
             })
             Taro.getImageInfo({
-              src: "http://118.24.33.215/share.jpg",
+              src: "https://pc.kuailework.com/klwk-weApp-images/recruit_applet/images2/shareImg/fenxiang1@2x.png",
               success: function (res) {
                 Taro.getImageInfo({
-                  src: "https://Taro.qlogo.cn/mmopen/vi_32/DYAIOgq83ep3biao8GyDemyuQL4ul1jwlsH6vJnDBvW6CXqeqssypfVmCOwj0Hk95lpvQwstds9oZq5tusB7K3g/132",
+                  src: "http://118.24.33.215/share.jpg",
                   success: function (ava) {
                     const ctx = Taro.createCanvasContext('canvas')
-                    ctx.setFillStyle('#fff')
+                    ctx.setFillStyle('#000')
                     ctx.fillRect(0, 0, 375, 550)
                     // 背景
                     ctx.drawImage(res.path, 0, 0, 375, 550)
@@ -54,20 +54,20 @@ class Share extends Component {
 
                     ctx.save();
                     ctx.beginPath()
-                    ctx.arc((375) / 2, 430, 20, 0, 2 * Math.PI)
+                    ctx.arc((375) / 2, 230, 20, 0, 2 * Math.PI)
                     ctx.clip()
 
-                    ctx.drawImage(ava.path, (375 - 40) / 2, 410, 40, 40)
+                    ctx.drawImage(ava.path, (375 - 40) / 2, 210, 40, 40)
 
                     ctx.restore()
 
                     ctx.font = 'normal bold 14px sans-serif'
                     ctx.setTextAlign('center')
-                    ctx.fillText("ICE", 375 / 2, 480)
+                    ctx.fillText("ICE", 375 / 2, 280)
 
                     ctx.font = 'normal bold 14px sans-serif'
                     ctx.setTextAlign('center')
-                    ctx.fillText("太棒啦,快来找你喜欢的主播吧", 375 / 2, 390)
+                    ctx.fillText("太棒啦,快来找你喜欢的主播吧", 375 / 2, 310)
 
 
                     ctx.draw(false, (e) => {
@@ -121,13 +121,13 @@ class Share extends Component {
       <View className='share'>
 
         {
-          this.state.loading ? <Loading /> : <View class='content'>
-            <Text class='share-text'>点击图片,长按可分享到微信群</Text>
-            <Image src={this.state.url} class='imgs' onClick={ this.previewImage }></Image>
+          this.state.loading ? <Loading /> : <View className='content'>
+            <Text className='share-text'>点击图片,长按可分享到微信群</Text>
+            <Image src={this.state.url} className='imgs' onClick={ this.previewImage }></Image>
           </View>
         }
 
-        <Canvas style="width: 750rpx; height: 1200rpx; position: fixed; top: 0; left: 10000rpx;" canvas-id="canvas"></Canvas>
+        <Canvas style="width: 750px; height: 1200px; position: fixed; top: 0; left: 10000px;" canvas-id="canvas"></Canvas>
       </View>
     )
   }

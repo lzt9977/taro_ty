@@ -64,41 +64,41 @@ class Circle extends Component {
           {
             this.props.circle.list.map((v, i) => {
               return (
-                <View class='item' key={v.id}>
-                  <View class='head'>
-                    <Image src={ v.avatar } class='avatar' />
-                    <View class='item-accompany'>
-                      <Text class='name'>{ v.accompany_name }</Text>
-                      <Text class='time'>{ v.create_time }</Text>
+                <View className='item' key={v.id}>
+                  <View className='head'>
+                    <Image src={ v.avatar } className='avatar' />
+                    <View className='item-accompany'>
+                      <Text className='name'>{ v.accompany_name }</Text>
+                      <Text className='time'>{ v.create_time }</Text>
                     </View>
                   </View>
-                  <View class='content' onClick={ this.navigateTo.bind(this, v.id) }>
+                  <View className='content' onClick={ this.navigateTo.bind(this, v.id) }>
                     { v.content }
                   </View>
 
 
                   {
-                    v.video ? <View class='image-view'>
-                      <View class='top'>
-                        <View class='iconfont icon-huo'></View>TOP { i + 1 }
+                    v.video ? <View className='image-view'>
+                      <View className='top'>
+                        <View className='iconfont icon-huo'></View>TOP { i + 1 }
                       </View>
-                      <Video class="myVideo" poster={ v.video_poster } src={ v.video } controls></Video>
+                      <Video className="myVideo" poster={ v.video_poster } src={ v.video } controls></Video>
                     </View>
                     :
-                    <View class='image-view' onClick={ this.navigateTo.bind(this, v.id) }>
-                      <View class='top'>
-                        <View class='iconfont icon-huo'></View>TOP { i + 1 }
+                    <View className='image-view' onClick={ this.navigateTo.bind(this, v.id) }>
+                      <View className='top'>
+                        <View className='iconfont icon-huo'></View>TOP { i + 1 }
                       </View>
-                      <Image src={ v.image } mode="aspectFill" class='image' />
+                      <Image src={ v.image } mode="aspectFill" className='image' />
                     </View>
                   }
 
                   {
-                    v.comment.length > 0 && <View class='comment' onClick={ this.navigateTo.bind(this, v.id) }>
+                    v.comment.length > 0 && <View className='comment' onClick={ this.navigateTo.bind(this, v.id) }>
                       {
                         v.comment.map((item, idx)=>{
                           return (
-                            <View class='qs' key={item.id}>
+                            <View className='qs' key={item.id}>
                               <Text>{ item.nickName }</Text>
                               <Text>:</Text>
                               <Text>{ item.content }</Text>
@@ -109,14 +109,14 @@ class Circle extends Component {
                     </View>
                   }
 
-                  <View class='agree' onClick={ this.navigateTo.bind(this, v.id) }>
-                    <View class='item-agree'>
-                      <View class='iconfont icon-zan'></View>
-                      <Text class='num'>{ v.agree_num }</Text>
+                  <View className='agree' onClick={ this.navigateTo.bind(this, v.id) }>
+                    <View className='item-agree'>
+                      <View className='iconfont icon-zan'></View>
+                      <Text className='num'>{ v.agree_num }</Text>
                     </View>
-                    <View class='item-agree'>
-                      <View class='iconfont icon-liuyanguanli'></View>
-                      <Text class='num'>{ v.view_num }</Text>
+                    <View className='item-agree'>
+                      <View className='iconfont icon-liuyanguanli'></View>
+                      <Text className='num'>{ v.view_num }</Text>
                     </View>
                   </View>
                 </View>
